@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+<h1>Formulario</h1>
+<br>
+<%= render 'form' %>
+<br>
+
+<h1>Lista de Productos</h1>
+<br>
+<table>
+  <thead>
+    <tr>
+      <th>Fecha de vencimiento</th>
+      <th>Producto</th>
+      <th>Precio</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inventarios.each do |inventario| %>
+      <tr>
+        <td><%= inventario.fecha %></td>
+        <td><%= inventario.producto %></td>
+        <td><%= inventario.precio %></td>
+        <td><%= link_to 'ver', inventario %></td>
+        <td><%= link_to 'Editar', edit_inventario_path(inventario) %></td>
+        <td><%= link_to 'Eliminar', inventario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
